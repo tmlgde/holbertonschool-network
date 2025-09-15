@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
-# Script qui change localhost en 127.0.0.2 et facebook.com en 8.8.8.8
+#Script de cahngement d'IP
 
-# Changer localhost en 127.0.0.2
-sudo sed -i 's/^127\.0\.0\.1\s\+localhost/127.0.0.2 localhost/' /etc/hosts
-
-# Supprimer les anciennes lignes facebook.com si elles existent
-sudo sed -i '/facebook\.com/d' /etc/hosts
-
-# Ajouter la nouvelle ligne
-echo "8.8.8.8 facebook.com" | sudo tee -a /etc/hosts > /dev/null
+sed -i '/localhost/s/^127\.0\.0\.1/127.0.0.2/' /etc/hosts
+if grep -qE '(^|\s)facebook\.com(\s|$)' /etc/hosts; then
+  sed -i '/(^|\s)facebook\.com\( \|$\)/ s/^[0-9.]\+/8.8.8.8/' /etc/hosts
+else
+  echo "8.8.8.8 facebook.com" >> /etc/hosts
+fi
