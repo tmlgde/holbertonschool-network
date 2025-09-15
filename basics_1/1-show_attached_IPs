@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
 # Affiche toutes les adresses IPv4 actives de la machine, une par ligne
-
 ip -4 -o addr show | awk '{print $4}' | cut -d/ -f1
