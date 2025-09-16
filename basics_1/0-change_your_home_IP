@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-#Script de cahngement d'IP
-
+# Ce script modifie /etc/hosts pour que localhost pointe vers 127.0.0.2 et facebook.com vers 8.8.8.8
 sed -i '/localhost/d' /etc/hosts
 sed -i '/facebook.com/d' /etc/hosts
 echo "127.0.0.2 localhost" >> /etc/hosts
